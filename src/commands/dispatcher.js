@@ -46,7 +46,7 @@ export default class CommandDispatcher extends EventEmitter {
 		if(!this.bot.config.values.selfbot && message.guild
 			&& Module.isEnabled(this.bot.storage.settings, message.guild, 'channels')
 			&& !this.bot.storage.allowedChannels.isEmpty(message.guild)
-			&& !this.bot.storage.allowedChannels.exists(message.guild, message.channel.id)
+			&& !this.bot.storage.allowedChannels.find(message.guild, message.channel.id)
 			&& !this.bot.permissions.isAdmin(message.guild, message.author)) return null;
 
 		// Make sure the user isn't blacklisted
